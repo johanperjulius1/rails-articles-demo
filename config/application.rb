@@ -1,5 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
+require "sprockets/railtie"
 require "rails"
 require "active_model/railtie"
 require "active_job/railtie"
@@ -21,9 +22,9 @@ module RailsArticlesDemo
     config.api_only = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', 
-          headers: :any, 
+        origins "*"
+        resource "*",
+          headers: :any,
           methods: %i[get post put delete],
           expose: %w(access-token expiry token-type uid client),
           max_age: 0
